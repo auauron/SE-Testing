@@ -1,70 +1,54 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
-  framework: '@storybook/react-webpack5',
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-a11y',
-    '@storybook/addon-webpack5-compiler-swc',
+  "stories": [
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
+  "addons": [
+    "@storybook/addon-webpack5-compiler-swc",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
+    "@storybook/addon-onboarding",
+  ],
+  "framework": "@storybook/react-webpack5",
   webpackFinal: async (config) => {
-    // Find and modify the CSS rule to include PostCSS with Tailwind
-    const cssRule = config.module?.rules?.find(
-      (rule) => rule && typeof rule === 'object' && rule.test?.toString().includes('css')
-    );
+    // Override CSS rule to use postcss-loader with tailwind
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
 
-    if (cssRule && typeof cssRule === 'object') {
-      cssRule.use = [
+    // Remove existing CSS rules
+    config.module.rules = config.module.rules.filter((rule: any) => {
+      if (rule && rule.test) {
+        return !rule.test.toString().includes('css');
+      }
+      return true;
+    });
+
+    // Add new CSS rule with PostCSS
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
         'style-loader',
         'css-loader',
         {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
-              plugins: [
-                tailwindcss,
-                autoprefixer,
-              ],
+              config: path.resolve(__dirname, '../postcss.config.js'),
             },
           },
         },
-      ];
-    } else {
-      // Add a new CSS rule if none exists
-      config.module?.rules?.push({
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  tailwindcss,
-                  autoprefixer,
-                ],
-              },
-            },
-          },
-        ],
-      });
-    }
+      ],
+    });
 
     return config;
   },
-  core: {
-    builder: {
-      name: '@storybook/builder-webpack5',
-      options: {
-        fsCache: true,
-        lazyCompilation: true,
-      },
-    },
-  },
 };
-
 export default config;
