@@ -11,10 +11,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Mock article with full content (sections with points)
-const fullArticle: Article = {
+const basicArticle: Article = {
   id: '1',
   title: 'Essential Nutrition During Pregnancy',
-  image: '/assets/pregnancyArticle/nutrition.jpg',
+  image: '../../public/assets/postpartum.png',
   category: 'Pregnancy',
   section: 'Health & Wellness',
   externalLink: 'https://example.com/full-article',
@@ -63,22 +63,38 @@ const fullArticle: Article = {
 // Mock article with minimal content
 const minimalArticle: Article = {
   id: '2',
-  title: 'Quick Tips for New Moms',
+  title: '',
   image: '/assets/postpartumArticle/tips.jpg',
-  category: 'Postpartum',
-  section: 'Self-Care',
+  category: '',
+  section: '',
 };
 
-// Mock article with partial content (no sections)
-const partialArticle: Article = {
+
+const maxArticle: Article = {
   id: '3',
   title: 'Understanding Baby Sleep Patterns',
   image: '/assets/earlyChildcareArticle/sleep.jpg',
-  category: 'Early Childcare',
+  category: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
   section: 'Sleep',
+  externalLink: 'https://example.com/full-article',
   content: {
-    headline: 'Understanding Your Baby\'s Sleep: What to Expect',
-    intro: 'Newborn sleep can be unpredictable and challenging for new parents. Understanding what\'s normal can help you navigate this phase with more confidence and less stress.',
+    headline: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    intro: 'Proper nutrition during pregnancy is vital for both your health and your baby\'s development. This comprehensive guide covers everything you need to know about eating well during this special time. Proper nutrition during pregnancy is vital for both your health and your baby\'s development. This comprehensive guide covers everything you need to know about eating well during this special time. Proper nutrition during pregnancy is vital for both your health and your baby\'s development. This comprehensive guide covers everything you need to know about eating well during this special time. Proper nutrition during pregnancy is vital for both your health and your baby\'s development. This comprehensive guide covers everything you need to know about eating well during this special time.',
+    sections: [
+      {
+        title: 'Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need Key Nutrients You Need',
+        content: 'During pregnancy, your body requires additional nutrients to support your growing baby. During pregnancy, your body requires additional nutrients to support your growing baby. During pregnancy, your body requires additional nutrients to support your growing baby. During pregnancy, your body requires additional nutrients to support your growing baby. During pregnancy, your body requires additional nutrients to support your growing baby.' ,
+        points: [
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+          'Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily) Folic acid: Essential for neural tube development (400-800 mcg daily)',
+        ],
+      },
+    ],
+    source: 'American College of Obstetricians and Gynecologists',
   },
 };
 
@@ -87,9 +103,9 @@ const partialArticle: Article = {
  * Displays an article with complete content including headline, intro, multiple sections with points, and an external link.
  * Use this to test the full rendering capabilities of the modal.
  */
-export const FullContent: Story = {
+export const BasicContent: Story = {
   args: {
-    article: fullArticle,
+    article: basicArticle,
     isOpen: true,
     onClose: () => {},
   },
@@ -108,14 +124,10 @@ export const MinimalContent: Story = {
   },
 };
 
-/**
- * Partial Content Story
- * Displays an article with headline and intro but no sections.
- * Tests the empty sections state.
- */
-export const PartialContent: Story = {
+
+export const MaxContent: Story = {
   args: {
-    article: partialArticle,
+    article: maxArticle,
     isOpen: true,
     onClose: () => {},
   },
