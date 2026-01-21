@@ -1,20 +1,23 @@
-🌸 BloomBuhay – Para sa buhay na bumubuhay.
+<!-- HI SIR! -->
 
-A Maternal Wellness Web App for Every Stage of Motherhood
+**Prerequisites:** Node.js, npm
 
-🩷 Overview
+1. Clone the repo
 
-BloomBuhay is a maternal wellness web application designed to guide, support, and empower Filipino mothers through pregnancy, postpartum, and early motherhood.
+   ```bash
+   git clone https://github.com/auauron/SE-Testing.git
+   cd client
+   ```
+2. Install dependencies
 
-The app combines health tracking, milestone visualization, emotional wellness, and educational content in one secure, user-friendly space.
+   ```bash
+   npm install
+   ```
 
-It allows users to log health data, visualize baby growth, manage tasks and appointments, explore articles, and relax with baby sounds — all in one place.
+3. Run Storybook
 
-💡 Problem Statement
+   ```bash
+   npm run storybook
+   ```
 
-Many Filipino mothers struggle to track their health and find reliable, centralized information throughout motherhood.
-Most existing apps focus only on pregnancy and neglect postpartum care, mental health, and long-term engagement.
-
-BloomBuhay solves this by providing a holistic, continuous digital companion for mothers — before, during, and after pregnancy.
-
-🥷 Developed by Team Mixed Berries
+4. Open http://localhost:6006
