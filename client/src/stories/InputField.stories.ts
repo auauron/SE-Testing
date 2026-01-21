@@ -4,7 +4,6 @@ import InputField from "../components/ui/inputField";
 const meta: Meta<typeof InputField> = {
   title: "Components/InputField",
   component: InputField,
-  tags: ["autodocs"],
 };
 
 export default meta;
