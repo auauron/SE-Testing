@@ -4,7 +4,6 @@ import InputField from "../components/ui/inputField";
 const meta: Meta<typeof InputField> = {
   title: "Components/InputField",
   component: InputField,
-  tags: ["autodocs"],
 };
 
 export default meta;
@@ -40,3 +39,38 @@ export const WithError: Story = {
     error: "Please enter a valid email address",
   },
 };
+
+export const Password: Story = {
+  args: {
+    label: "Password",
+    type: "password",
+    value: "mySecretPassword123",
+    onChange: (value) => console.log("Input changed:", value),
+    placeholder: "Enter your password",
+  },
+};
+
+export const TextInput: Story = {
+  args: {
+    label: "Full Name",
+    type: "text",
+    value: "",
+    onChange: (value) => console.log("Input changed:", value),
+    placeholder: "Enter your full name",
+  },
+};
+
+export const NumberInput: Story = {
+  args: {
+    label: "Age",
+    type: "number",
+    value: "",
+    onChange: (value) => console.log("Input changed:", value),
+    placeholder: "Enter your age",
+    min: 0,
+    max: 120,
+  },
+};
+
+
+
